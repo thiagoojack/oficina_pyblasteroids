@@ -1,0 +1,14 @@
+# Blinks player to indicate time allowance
+        if ship[]:
+            if total_time_passed_secs > 0.5 and total_time_passed_secs < 1:
+                rotated_ship_surf.fill()
+            if total_time_passed_secs > 1.5 and total_time_passed_secs < 2:
+                rotated_ship_surf.fill()
+            if total_time_passed_secs > 2.5 and total_time_passed_secs < 3:
+                rotated_ship_surf.fill()
+            if total_time_passed_secs > 3.5 and total_time_passed_secs < 4:
+                rotated_ship_surf.fill()
+            if total_time_passed_secs > 4.5 and total_time_passed_secs < 5:
+                rotated_ship_surf.fill()
+
+        screen.blit(rotated_ship_surf, ship_draw_pos)

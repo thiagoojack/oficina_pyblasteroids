@@ -1,0 +1,34 @@
+        pressed_keys = pygame.key.get_pressed()
+        rot_direction = 0.0
+        mov_direction = -1
+
+        if pressed_keys[]:
+            exit_game()
+        if pressed_keys[]: 
+            rot_direction = +1.0        
+        elif pressed_keys[]:
+            rot_direction = -1.0        
+        if pressed_keys[]:
+            ship['speed'] += 
+            if ship['speed'] > MAX_SPEED: ship['speed'] = MAX_SPEED
+        elif pressed_keys[]:
+            ship['speed'] -= 
+            if ship['speed'] < 0: ship['speed'] = 0
+        if pressed_keys[]:
+            new_blast = get_blast()
+            new_blast['pos'] = Vector2(ship['pos'].x, ship['pos'].y)
+            new_blast['rot'] = ship['rot']
+            blasts.append()
+            blaster_sound.play()
+
+        screen.fill(BLACK)
+        time_passed = clock.tick(30)
+        time_passed_secs = time_passed / 1000.0        
+        total_time_passed_secs += time_passed_secs
+
+        rock_add_counter += 1
+        if rock_add_counter == ADD_NEW_ROCK_RATE:
+            rock_add_counter = 0
+            rock = new_rock()
+            rock['pos'] = Vector2(0 - ROCK_W, random.randint(0, SCR_H - ROCK_H))
+            rocks.append(rock)

@@ -1,0 +1,28 @@
+# Cores: R G B values, how much red, green and blue
+BLACK = ()
+WHITE = ()
+GREEN = ()
+CARNATION = ()
+
+# Inicializar o jogo
+SCR_SIZE = SCR_W, SCR_H = 
+SHIP_W, SHIP_H = 
+ROCK_W, ROCK_H = 
+NUM_OF_ROCKS = 
+NUM_OF_ROCK_SPLIT = 
+ADD_NEW_ROCK_RATE = 
+SPEED_INCREMENT = 
+SPEED_DECREMENT = 
+MAX_SPEED = 
+
+# Points that create the shape of our asteroid
+ROCK_SHAPE = [(5,0), (0,15), (0,30),
+              (15,40), (20,30), (30,40),
+              (45,30), (45,25), (25,20),
+              (45,10), (36,0), (25,5)]
+
+#1_criando_janela_do_jogo_INÍCIO
+
+
+
+#1_criando_janela_do_jogo_FIM

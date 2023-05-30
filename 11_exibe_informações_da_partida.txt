@@ -1,0 +1,32 @@
+        ## Displays the score on the left side of the screen ##
+        draw_text(str(score), score_font, screen, (20, 5), )
+
+        ## Displays the number of lives left ##
+        x = 28
+        for i in range(num_of_lives):        
+            screen.blit(ship['surf'], (x, 60))
+            x += SHIP_W + 10
+
+        # Displays "Game Over!" if no more lives left
+        if num_of_lives <= :
+            running = 
+            screen_copy = screen.copy()
+            screen_rect = screen.get_rect()
+            
+            if score > top_score:
+                top_score = 
+                top_score_rect = text_font.render('New Top Score: %s!' % str(), 1, GREEN).get_rect()
+                draw_text('New Top Score: %s!' % str(top_score), text_font, screen,
+                          (screen_rect.centerx - top_score_rect.width / 2, 100))                
+                pygame.display.update()
+                pygame.time.wait()
+
+            game_over_rect = title_font.render('', 1, GREEN).get_rect()
+            draw_text('', title_font, screen_copy,
+                      (screen_rect.centerx - game_over_rect.width / 2,
+                       screen_rect.centery - game_over_rect.height / 2))
+            screen.blit(screen_copy, (0, 0))
+            pygame.display.update()
+            pygame.time.wait()
+                
+        pygame.display.update()

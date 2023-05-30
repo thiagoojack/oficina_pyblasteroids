@@ -1,0 +1,59 @@
+def press_any_key():
+    while True:
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                exit_game()
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE:
+                    exit_game()
+                return
+    
+def draw_text(text, font, surface, pos, color=GREEN):
+    text_surf = font.render(text, 1, color)
+    surface.blit(text_surf, pos)
+
+def get_blast():
+    blast = {'speed': MAX_SPEED * 3,
+             'pos': Vector2(200, 150),
+             'rot': 0.0,
+             'surf': pygame.Surface((3, 11))}
+    pygame.draw.aaline(blast['surf'], WHITE, [1, 0], [1, 10])
+    return blast
+
+def new_rock():
+    # Data structure for our asteroid
+    rock = {'speed': random.randint(20, 80),
+            'pos': Vector2(random.randint(0, SCR_W - ROCK_W),
+                           random.randint(0, SCR_H - ROCK_H)),
+            'rot': 0.0,
+            'rot_speed': random.randint(90, 180) / 1.0,
+            'rot_direction': random.choice([-1, 1]),
+            'surf': pygame.Surface((ROCK_W, ROCK_H)),
+            'rect': pygame.Rect(0, 0, ROCK_W, ROCK_H),
+            'hits': 0}
+    
+    # Draw our asteroid using geometric primitives
+    pygame.draw.polygon(rock['surf'], WHITE, ROCK_SHAPE, 1)
+    return rock
+
+def new_ship():
+    # Data structure for our spaceship, Vectorize
+    ship = {'speed': 0,
+            'pos': Vector2(200, 150),
+            'rot': 0.0,
+            'rot_speed': 360.0,
+            'surf': pygame.Surface((SHIP_W, SHIP_H)),
+            'new': True}
+
+    # Draws spaceship using geometric primitives
+    pygame.draw.aaline(ship['surf'], GREEN, [0, 20], [8, 0])
+    pygame.draw.aaline(ship['surf'], GREEN, [8, 0], [16, 20])
+    pygame.draw.aaline(ship['surf'], GREEN, [2, 15], [7, 15])
+    pygame.draw.aaline(ship['surf'], GREEN, [14, 15], [9, 15])
+    return ship
+
+def center_rotate(image, w, h):
+    """Returns the drawing position and where it's heading"""
+    heading_x = sin(image['rot'] * pi / 180.0) # Convert degrees to rads then calculate x component 
+    heading_y = cos(image['rot'] * pi / 180.0) # Convert degrees to rads then calculate y component
+    return Vector2(image['pos'].x - w / 2, image['pos'].y - h / 2), Vector2(heading_x, heading_y)

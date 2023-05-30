@@ -1,0 +1,8 @@
+        # Checks if player has collided with an enemy; it doesn't check for the first 5 seconds
+        ship_rect = pygame.Rect(ship_draw_pos.x, ship_draw_pos.y, sw, sh)
+        for rock in rocks[:]:
+            if ship_rect.colliderect(rock['rect']) and not ship['new']:
+                total_time_passed_secs = 0
+                num_of_lives -= 
+                ship = 
+                

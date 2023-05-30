@@ -1,0 +1,57 @@
+        ## Updates the blasts ##
+        for blast in blasts[:]:            
+            # The first time around the blast is not yet rotated
+            rotated_blast_surf = pygame.transform.rotate(blast['surf'], blast['rot'])
+
+            # The rotated surface may not return the same dimensions as the original
+            bw, bh = rotated_blast_surf.get_size()
+
+            # We adjust our x and y so that the center of the blast is in the original
+            # x and y position
+            blast_draw_pos, b_heading = center_rotate(blast, bw, bh)
+            b_heading *= mov_direction
+
+            # New position time based
+            blast['pos'] += b_heading * time_passed_secs * blast['speed']
+
+            # Removes blasts that has left the edges of the screen from list.
+            if blast['pos'].y < 0 and blast in blasts:
+                blasts.remove(blast)
+            if blast['pos'].y + bh > SCR_H and blast in blasts:
+                blasts.remove(blast)
+            if blast['pos'].x < 0 and blast in blasts:
+                blasts.remove(blast)
+            if blast['pos'].x + bw > SCR_W and blast in blasts:
+                blasts.remove(blast)
+
+            # Checks if enemy was hit by blast and split it in two
+            # Remove from list if it has already been hit a couple of times
+            blast_rect = pygame.Rect(blast_draw_pos.x, blast_draw_pos.y, bw, bh)
+            for rock in rocks[:]:
+                if blast_rect.colliderect(rock['rect']) and blast in blasts:
+                    
+                    rotated_rock_surf = pygame.transform.rotate(rock['surf'], rock['rot'])        
+                    rw, rh = rotated_rock_surf.get_size()
+
+                    rock_half = new_rock()
+                    rock_half['pos'] = Vector2(rock['pos'].x, rock['pos'].y)                    
+
+                    rock['pos'].y -= rh + (rh / 2)
+                    rock_half['pos'].y += rh + (rh / 2)                    
+
+                    rock['surf'] = pygame.transform.scale(rotated_rock_surf, (rw - (rw / 4), rh - (rh / 4)))
+                    rock_half['surf'] = rock['surf']                    
+
+                    rock['hits'] += 1
+
+                    if rock['hits'] >= NUM_OF_ROCK_SPLIT:
+                        rocks.remove(rock)
+                    else:
+                        rock_half['hits'] = rock['hits']
+                        rocks.append(rock_half)
+                    
+                    blasts.remove(blast)
+                    score += 100
+                    asteroid_hit_sound.play()
+
+            screen.blit(rotated_blast_surf, blast_draw_pos)

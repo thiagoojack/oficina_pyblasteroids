@@ -1,0 +1,16 @@
+    title_font = pygame.font.Font('assets/SFPixelate.ttf', )
+    text_font = pygame.font.Font('assets/SFPixelate.ttf', )
+    score_font = pygame.font.Font(None, )
+
+    welcome_sound = pygame.mixer.Sound('assets/sfx-01.wav')
+    blaster_sound = pygame.mixer.Sound('assets/blast.wav')
+    asteroid_hit_sound = pygame.mixer.Sound('assets/hit.wav')
+    player_collision_sound = pygame.mixer.Sound('assets/explode.wav')
+
+    screen_rect = screen.get_rect()
+    ship =     
+    blasts = 
+    score = 
+    num_of_lives =     
+    total_time_passed_secs =     
+    rock_add_counter =  

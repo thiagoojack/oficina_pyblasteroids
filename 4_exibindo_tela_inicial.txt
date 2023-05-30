@@ -1,0 +1,21 @@
+    # Displays game title screen and waits for user
+    title_rect = title_font.render('pyBlasteroids', 1, GREEN).get_rect()
+    start_rect = text_font.render('Press any key to start', 1, GREEN).get_rect()
+    draw_text('pyBlasteroids', title_font, screen,
+              (screen_rect.centerx - title_rect.width / 2,
+               screen_rect.centery - (title_rect.height + start_rect.height + 10) / 2))
+    draw_text('Press any key to start', text_font, screen,
+              (screen_rect.centerx - start_rect.width / 2,
+               screen_rect.centery + 10))
+    global top_score
+    if top_score > :
+        draw_text('Top score: %s' % str(top_score), text_font, screen, (20, 10), CARNATION)
+    pygame.display.update()
+    welcome_sound.play()
+    press_any_key()
+    clock = pygame.time.Clock()
+
+    rocks = []
+    for i in range():
+        rock = new_rock()        
+        rocks.append()

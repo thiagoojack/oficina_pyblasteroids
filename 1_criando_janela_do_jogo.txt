@@ -1,0 +1,84 @@
+def exit_game():
+    pygame.quit()
+    sys.exit()
+
+
+#2_funções_importantes_INÍCIO
+
+
+
+#2_funções_importantes_FIM
+
+
+def main():
+    pygame.init()
+    screen = pygame.display.set_mode()    
+    pygame.display.set_caption()
+
+    #3_criando_ativos_INÍCIO
+
+
+
+    #3_criando_ativos_FIM
+
+    running = 
+
+    #4_exibindo_tela_inicial_INÍCIO
+
+
+
+    #4_exibindo_tela_inicial_FIM
+
+    while running:
+        for event in pygame.event.get():
+            if event.type == :
+                exit_game()
+
+        #5_capturando_teclas_INÍCIO
+
+
+
+        #5_capturando_teclas_FIM
+
+        #6_atualiza_explosões_INÍCIO
+
+
+
+        #6_atualiza_explosões_FIM
+
+        #7_atualiza_asteroide_e_jogador_INÍCIO
+
+
+
+        #7_atualiza_asteroide_e_jogador_FIM
+
+        #8_impede_jogador_sair_da_tela_INÍCIO
+
+
+
+        #8_impede_jogador_sair_da_tela_FIM
+
+        #9_verifica_colisão_INÍCIO
+
+
+
+        #9_verifica_colisão_FIM
+
+        #10_pisca_jogador_INÍCIO
+
+
+
+        #10_pisca_jogador_FIM
+
+        #11_exibe_informações_da_partida_INÍCIO
+
+
+
+        #11_exibe_informações_da_partida_FIM
+
+
+    main()
+
+top_score = 0
+if __name__ == '__main__':
+    main()

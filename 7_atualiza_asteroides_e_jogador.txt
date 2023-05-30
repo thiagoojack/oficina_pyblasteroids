@@ -1,0 +1,32 @@
+## Updates the asteroids, the same thing as the blasts ##
+        for rock in rocks[:]:
+            rotated_rock_surf = pygame.transform.rotate(rock['surf'], rock['rot'])        
+            rw, rh = rotated_rock_surf.get_size()
+            rock['rot'] += rock['rot_direction'] * rock['rot_speed'] * time_passed_secs
+            rock_draw_pos, r_heading = center_rotate(rock, rw, rh)        
+            rock['pos'].x += 1.0 * time_passed_secs * rock['speed']        
+            rock['rect'] = pygame.Rect(rock_draw_pos.x, rock_draw_pos.y, rw, rh)
+
+            if rock['pos'].y < 0:
+                rocks.remove(rock)                
+            if rock['pos'].y + rh > SCR_H:
+                rocks.remove(rock)
+            if rock['pos'].x > SCR_W + ROCK_W:
+                rock['pos'].x = -ROCK_W
+
+            screen.blit(rotated_rock_surf, rock_draw_pos)
+
+        ## Updates the player, the same thing as the blasts ##
+        if total_time_passed_secs >= 5:
+            ship['new'] = False
+            total_time_passed_secs = 0            
+            
+        rotated_ship_surf = pygame.transform.rotate(ship['surf'], ship['rot'])        
+        sw, sh = rotated_ship_surf.get_size()
+        
+        # This is for the spaceship's rotation--time based
+        ship['rot'] += rot_direction * ship['rot_speed'] * time_passed_secs
+        
+        ship_draw_pos, s_heading = center_rotate(ship, sw, sh)
+        s_heading *= mov_direction        
+        ship['pos'] += s_heading * time_passed_secs * ship['speed']

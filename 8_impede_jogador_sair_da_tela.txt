@@ -1,0 +1,9 @@
+# Stops player from leaving the edges of the screen
+        if ship['pos'].y < sh:
+            ship['pos'].y = sh
+        if ship['pos'].y + sh > SCR_H:
+            ship['pos'].y = SCR_H - sh
+        if ship['pos'].x < sw:
+            ship['pos'].x = sw
+        if ship['pos'].x + sw > SCR_W:
+            ship['pos'].x = SCR_W - sw
